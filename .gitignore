@@ -3,5 +3,5 @@ MathEquationSolver_notes.txt
 ReadCsvs.ipynb
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
-./FirstModel\data.csv
 MathSymbolsData.csv
+FirstModel/data.csv
