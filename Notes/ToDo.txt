@@ -1,0 +1,10 @@
+Nov2
+------------------------
+1. Find best threshold method;
+    a) normal threshold
+        i  - gaussian blur or not 
+            * PLAY with gaussian blur values!! 
+        ii - binary bs Otsu 
+    b) adaptive threshold -> PLAY with block and constant size (last 2 arguments)
+        i  - adaptive mean
+        ii - adaptive gaussian aperature
