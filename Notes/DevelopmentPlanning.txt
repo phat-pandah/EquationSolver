@@ -1,0 +1,115 @@
+Taking things step by step for this project
+This is a sort of road map, OPEN TO REVISION!!!
+
+FOCUS FOR EACH VERSION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Version1: Get the project off the ground => Proof of concept
+Version2: Introduce variables, make basic pipeline & model more robust
+Version3: Upgrade pipeline to segment expressions with exponents, add trig & exp functions
+Version4: symbolic equation solver, rootfinder, function graphing
+Version5: Linear Algebra: Matrix stuff, eigen solver (like symbolab)
+Version6: derivatives
+Version7: Integrals
+Version8: To latex
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+===================================================
+Version 1: Basic Expression recognition 
+===================================================
+
+* use 1-9 symbols dataset
+    Build version 1 of image segmentation pipeline
+----------------------------------------------------
+    - Convert input image to grayscale
+    - invert image pixels
+    - gaussian blurr
+         ^ play with kernel size
+    - Global threshold method with Otsu thresholding
+    - Find and sort contours
+    - Segment the features from the image 
+
+    Build model
+----------------------------------------------------
+    - Vanilla model: 
+        Conv2d->MaxPool->Conv2d->MaxPool->Dropout(0.2)->Flatten->Dense->Dense->Dense
+
+    Solver
+----------------------------------------------------
+    - Solve basic numerical Expression 
+        * 2 options: 
+            a) toString then use eval(stringExpression) (Model outputs string by default)
+            b) take model and look to convert output so that numpy/scipy can be used
+
+    WebDev + Mobile
+----------------------------------------------------
+    - No webdev needed yet
+
+
+
+===================================================
+Version 2: Expresion with unknown + basic equation (solve for x)
+===================================================
+
+* use 1-9, =, x symbols dataset
+
+    Improve Image segmentation pipeline
+----------------------------------------------------
+
+    - Use MorphollogyEx with getStructeringElement as kernal to segment '=' string
+    - Start testing pipeline with different input images (different lighting, different font, pen, pencil, etc)
+    - adapt pre-processing techniques
+
+    Update/Upgrade/explore Model
+----------------------------------------------------
+    - Migrate from keras to PyTorch
+    - Improve archetecture of vanilla model
+    - tune hyperparameters of vanilla model
+    - Play with differnt model (deeper models, wider models, different kernals)
+    - Look at existing models (ResNet, LeNet, AlexNet, VGG-16)
+
+    Solver
+----------------------------------------------------
+    - Start to look at symbolic manipulation 
+
+    WebDev + Mobile
+----------------------------------------------------
+    - No webdev needed yet
+
+
+===================================================
+Version 3: exponents and trig stuff
+===================================================
+
+* use 1-9, =, x, cos, sin, tan, e training dataset
+
+    Image segmentation pipeline
+----------------------------------------------------
+    - find a way to group trig functions as one img 
+        ^ex: if input expression/equation contains cos,
+             it should be segmented as "cos" not "c", "o","s"
+             look into using similar techniques used for equal sign 
+             or use horizontal histogram segmentation techniques
+
+    - recognize exponents ==> BIGGEST CHALLENGE!!!
+        ^ look into horizontal/vertical histogram methods
+
+    Model
+----------------------------------------------------
+    - Start researching conv + rnn, conv + lstm models with CTC loss function, Transformers (Vision Transformers)
+        https://ai.googleblog.com/2020/12/transformers-for-image-recognition-at.html
+    - Look at data augmentation techniques create a better training set
+
+    Solver
+----------------------------------------------------
+    - Find a way to correctly sequence the output of the model to match the input equation
+    - update solver to work with trig functions and exponential
+
+    WebDev + Mobil
+----------------------------------------------------
+    - Figure out UI & UX 
+        ^ ex: have a "draw equation" option
+    - pick framworks (Most likely Django, React, tailwind, whatever else)
+    - Do we need database? 
+
+
+
